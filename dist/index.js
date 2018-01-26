@@ -2899,73 +2899,77 @@ var render = function() {
         "transition",
         { attrs: { name: "modal" } },
         [
-          _c("modal", { attrs: { show: _vm.modalOpen } }, [
-            _c(
-              "div",
-              {
-                staticClass: "bg-red-light p-3",
-                attrs: { slot: "header" },
-                slot: "header"
-              },
-              [_c("p", { staticClass: "text-lg" }, [_vm._v("Are you sure?")])]
-            ),
-            _vm._v(" "),
-            _c(
-              "div",
-              {
-                staticClass: "py-8 px-4",
-                attrs: { slot: "body" },
-                slot: "body"
-              },
-              [_c("p", [_vm._v(_vm._s(_vm.confirm_message))])]
-            ),
-            _vm._v(" "),
-            _c(
-              "div",
-              {
-                staticClass: "flex justify-end items-center pb-4 px-4",
-                attrs: { slot: "footer" },
-                slot: "footer"
-              },
-              [
-                _c(
-                  "button",
-                  {
-                    staticClass: "p-2 mx-2 bg-grey-light text-white",
-                    attrs: { type: "button" },
-                    on: {
-                      click: function($event) {
-                        _vm.modalOpen = false
+          _c(
+            "modal",
+            { key: _vm.inner - _vm.modal, attrs: { show: _vm.modalOpen } },
+            [
+              _c(
+                "div",
+                {
+                  staticClass: "bg-red-light p-3",
+                  attrs: { slot: "header" },
+                  slot: "header"
+                },
+                [_c("p", { staticClass: "text-lg" }, [_vm._v("Are you sure?")])]
+              ),
+              _vm._v(" "),
+              _c(
+                "div",
+                {
+                  staticClass: "py-8 px-4",
+                  attrs: { slot: "body" },
+                  slot: "body"
+                },
+                [_c("p", [_vm._v(_vm._s(_vm.confirm_message))])]
+              ),
+              _vm._v(" "),
+              _c(
+                "div",
+                {
+                  staticClass: "flex justify-end items-center pb-4 px-4",
+                  attrs: { slot: "footer" },
+                  slot: "footer"
+                },
+                [
+                  _c(
+                    "button",
+                    {
+                      staticClass: "p-2 mx-2 bg-grey-light text-white",
+                      attrs: { type: "button" },
+                      on: {
+                        click: function($event) {
+                          _vm.modalOpen = false
+                        }
                       }
-                    }
-                  },
-                  [_vm._v("Cancel")]
-                ),
-                _vm._v(" "),
-                _c(
-                  "form",
-                  {
-                    attrs: { action: _vm.deleteUrl },
-                    on: {
-                      submit: function($event) {
-                        _vm.submit($event)
+                    },
+                    [_vm._v("Cancel")]
+                  ),
+                  _vm._v(" "),
+                  _c(
+                    "form",
+                    {
+                      attrs: { action: _vm.deleteUrl },
+                      on: {
+                        submit: function($event) {
+                          _vm.submit($event)
+                        }
                       }
-                    }
-                  },
-                  [
-                    _c(
-                      "button",
-                      {
-                        staticClass: "p-2 mx-2 bg-red-light text-white",
-                        attrs: { disabled: _vm.waiting, type: "submit" }
-                      },
-                      [_vm._v("OK, Delete")]
-                    )
-                  ]
-                )
-              ]
-            )
-          ])
+                    },
+                    [
+                      _c(
+                        "button",
+                        {
+                          staticClass: "p-2 mx-2 bg-red-light text-white",
+                          attrs: { disabled: _vm.waiting, type: "submit" }
+                        },
+                        [_vm._v("OK, Delete")]
+                      )
+                    ]
+                  )
+                ]
+              )
+            ]
+          )
         ],
         1
       )

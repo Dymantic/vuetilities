@@ -2,7 +2,7 @@
   <span class="dd-delete-modal-component">
       <button class="p-2 bg-red-light mx-2 text-white" @click="modalOpen = true">Delete</button>
       <transition name="modal">
-      <modal :show="modalOpen">
+      <modal :show="modalOpen" :key="inner-modal">
         <div slot="header" class="bg-red-light p-3">
           <p class="text-lg">Are you sure?</p>
         </div>
