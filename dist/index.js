@@ -709,7 +709,6 @@ if (false) {(function () {
 //
 //
 //
-//
 
 /* harmony default export */ __webpack_exports__["a"] = ({
   props: {
@@ -728,6 +727,9 @@ if (false) {(function () {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__BaseModal__ = __webpack_require__(4);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_axios__ = __webpack_require__(23);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_axios___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_axios__);
+//
+//
+//
 //
 //
 //
@@ -1723,16 +1725,7 @@ var render = function() {
     [
       _c("div", { staticClass: "modal-wrapper" }, [
         _c("div", { staticClass: "modal-container" }, [
-          _c(
-            "div",
-            { staticClass: "modal-header" },
-            [
-              _vm._t("header", [
-                _vm._v("\n                    default header\n                ")
-              ])
-            ],
-            2
-          ),
+          _c("div", { staticClass: "modal-header" }, [_vm._t("header")], 2),
           _vm._v(" "),
           _c(
             "div",
@@ -2767,6 +2760,7 @@ var render = function() {
       _c(
         "button",
         {
+          staticClass: "p-2 bg-red mx-2 text-white",
           on: {
             click: function($event) {
               _vm.modalOpen = true
@@ -2781,43 +2775,65 @@ var render = function() {
         { attrs: { name: "modal" } },
         [
           _c("modal", { attrs: { show: _vm.modalOpen } }, [
+            _c(
+              "div",
+              {
+                staticClass: "bg-red",
+                attrs: { slot: "header" },
+                slot: "header"
+              },
+              [_c("p", { staticClass: "text-lg" }, [_vm._v("Are you sure?")])]
+            ),
+            _vm._v(" "),
             _c("div", { attrs: { slot: "body" }, slot: "body" }, [
               _c("p", [_vm._v(_vm._s(_vm.confirm_message))])
             ]),
             _vm._v(" "),
-            _c("div", { attrs: { slot: "footer" }, slot: "footer" }, [
-              _c(
-                "button",
-                {
-                  attrs: { type: "button" },
-                  on: {
-                    click: function($event) {
-                      _vm.modalOpen = false
+            _c(
+              "div",
+              {
+                staticClass: "flex justify-end items-center",
+                attrs: { slot: "footer" },
+                slot: "footer"
+              },
+              [
+                _c(
+                  "button",
+                  {
+                    staticClass: "p-2 mx-2 bg-grey-light text-white",
+                    attrs: { type: "button" },
+                    on: {
+                      click: function($event) {
+                        _vm.modalOpen = false
+                      }
                     }
-                  }
-                },
-                [_vm._v("Cancel")]
-              ),
-              _vm._v(" "),
-              _c(
-                "form",
-                {
-                  attrs: { action: _vm.deleteUrl },
-                  on: {
-                    submit: function($event) {
-                      _vm.submit($event)
+                  },
+                  [_vm._v("Cancel")]
+                ),
+                _vm._v(" "),
+                _c(
+                  "form",
+                  {
+                    attrs: { action: _vm.deleteUrl },
+                    on: {
+                      submit: function($event) {
+                        _vm.submit($event)
+                      }
                     }
-                  }
-                },
-                [
-                  _c(
-                    "button",
-                    { attrs: { disabled: _vm.waiting, type: "submit" } },
-                    [_vm._v("OK, Delete")]
-                  )
-                ]
-              )
-            ])
+                  },
+                  [
+                    _c(
+                      "button",
+                      {
+                        staticClass: "p-2 mx-2 bg-red text-white",
+                        attrs: { disabled: _vm.waiting, type: "submit" }
+                      },
+                      [_vm._v("OK, Delete")]
+                    )
+                  ]
+                )
+              ]
+            )
           ])
         ],
         1
