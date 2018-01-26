@@ -1722,61 +1722,51 @@ var render = function() {
     },
     [
       _c("div", { staticClass: "modal-wrapper" }, [
-        _c(
-          "div",
-          { staticClass: "modal-container", class: { wide: _vm.wider } },
-          [
-            _c(
-              "div",
-              { staticClass: "modal-header" },
-              [
-                _vm._t("header", [
-                  _vm._v(
-                    "\n                    default header\n                "
-                  )
-                ])
-              ],
-              2
-            ),
-            _vm._v(" "),
-            _c(
-              "div",
-              { staticClass: "modal-body" },
-              [
-                _vm._t("body", [
-                  _vm._v("\n                    default body\n                ")
-                ])
-              ],
-              2
-            ),
-            _vm._v(" "),
-            _c(
-              "div",
-              { staticClass: "modal-footer" },
-              [
-                _vm._t("footer", [
-                  _c(
-                    "button",
-                    {
-                      staticClass: "modal-default-button",
-                      on: {
-                        click: function($event) {
-                          _vm.show = false
-                        }
+        _c("div", { staticClass: "modal-container" }, [
+          _c(
+            "div",
+            { staticClass: "modal-header" },
+            [
+              _vm._t("header", [
+                _vm._v("\n                    default header\n                ")
+              ])
+            ],
+            2
+          ),
+          _vm._v(" "),
+          _c(
+            "div",
+            { staticClass: "modal-body" },
+            [
+              _vm._t("body", [
+                _vm._v("\n                    default body\n                ")
+              ])
+            ],
+            2
+          ),
+          _vm._v(" "),
+          _c(
+            "div",
+            { staticClass: "modal-footer" },
+            [
+              _vm._t("footer", [
+                _c(
+                  "button",
+                  {
+                    staticClass: "modal-default-button",
+                    on: {
+                      click: function($event) {
+                        _vm.show = false
                       }
-                    },
-                    [
-                      _vm._v(
-                        "\n                        OK\n                    "
-                      )
-                    ]
-                  )
-                ])
-              ],
-              2
-            )
-          ]
-        )
+                    }
+                  },
+                  [_vm._v("\n                        OK\n                    ")]
+                )
+              ])
+            ],
+            2
+          )
+        ])
       ])
     ]
   )
@@ -2774,13 +2764,17 @@ var render = function() {
     "span",
     { staticClass: "dd-delete-modal-component" },
     [
-      _c("button", {
-        on: {
-          click: function($event) {
-            _vm.modalOpen = true
+      _c(
+        "button",
+        {
+          on: {
+            click: function($event) {
+              _vm.modalOpen = true
+            }
           }
-        }
-      }),
+        },
+        [_vm._v("Delete")]
+      ),
       _vm._v(" "),
       _c(
         "transition",
