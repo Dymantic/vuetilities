@@ -1364,7 +1364,7 @@ exports = module.exports = __webpack_require__(17)(false);
 
 
 // module
-exports.push([module.i, "\n.dd-modal-mask {\n  position: fixed;\n  z-index: 9998;\n  top: 0;\n  left: 0;\n  width: 100%;\n  height: 100%;\n  background-color: rgba(0, 0, 0, 0.5);\n  display: table;\n  transition: opacity 0.3s ease;\n}\n.dd-modal-mask .modal-wrapper {\n    display: table-cell;\n    vertical-align: middle;\n}\n.dd-modal-mask .modal-container {\n    width: 100%;\n    max-width: 600px;\n    margin: 0px auto;\n    padding: 20px 30px;\n    background-color: #fff;\n    border-radius: 2px;\n    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.33);\n    transition: all 0.3s ease;\n    max-height: 95vh;\n    color: #333;\n}\n.dd-modal-mask .modal-container.wide {\n      max-width: 90vw;\n}\n.dd-modal-mask .modal-header h3 {\n    margin-top: 0;\n    color: #333;\n    max-height: 80px;\n}\n.dd-modal-mask .modal-body {\n    margin: 20px 0;\n    max-height: 85vh;\n    overflow-y: auto;\n}\n.dd-modal-mask .modal-footer {\n    max-height: 100px;\n}\n.dd-modal-mask .modal-enter,\n  .dd-modal-mask .modal-leave {\n    opacity: 0;\n}\n.dd-modal-mask .modal-enter .modal-container,\n  .dd-modal-mask .modal-leave .modal-container {\n    -webkit-transform: scale(1.1);\n    transform: scale(1.1);\n}\n.dd-modal-mask .modal-enter {\n    opacity: 0;\n}\n.dd-modal-mask .modal-leave-active {\n    opacity: 0;\n}\n.dd-modal-mask .modal-enter .modal-container,\n  .dd-modal-mask .modal-leave-active .modal-container {\n    -webkit-transform: scale(1.1);\n    transform: scale(1.1);\n}\n", ""]);
+exports.push([module.i, "\n.dd-modal-mask {\n  position: fixed;\n  z-index: 9998;\n  top: 0;\n  left: 0;\n  width: 100%;\n  height: 100%;\n  background-color: rgba(0, 0, 0, 0.5);\n  display: table;\n  transition: opacity 0.3s ease;\n}\n.dd-modal-mask .modal-wrapper {\n    display: table-cell;\n    vertical-align: middle;\n}\n.dd-modal-mask .modal-container {\n    width: 100%;\n    max-width: 600px;\n    margin: 0px auto;\n    background-color: #fff;\n    border-radius: 2px;\n    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.33);\n    transition: all 0.3s ease;\n    max-height: 95vh;\n    color: #333;\n}\n.dd-modal-mask .modal-container.wide {\n      max-width: 90vw;\n}\n.dd-modal-mask .modal-header h3 {\n    margin-top: 0;\n    color: #333;\n    max-height: 80px;\n}\n.dd-modal-mask .modal-body {\n    margin: 20px 0;\n    max-height: 85vh;\n    overflow-y: auto;\n}\n.dd-modal-mask .modal-footer {\n    max-height: 100px;\n}\n.dd-modal-mask .modal-enter,\n  .dd-modal-mask .modal-leave {\n    opacity: 0;\n}\n.dd-modal-mask .modal-enter .modal-container,\n  .dd-modal-mask .modal-leave .modal-container {\n    -webkit-transform: scale(1.1);\n    transform: scale(1.1);\n}\n.dd-modal-mask .modal-enter {\n    opacity: 0;\n}\n.dd-modal-mask .modal-leave-active {\n    opacity: 0;\n}\n.dd-modal-mask .modal-enter .modal-container,\n  .dd-modal-mask .modal-leave-active .modal-container {\n    -webkit-transform: scale(1.1);\n    transform: scale(1.1);\n}\n", ""]);
 
 // exports
 
@@ -2760,7 +2760,7 @@ var render = function() {
       _c(
         "button",
         {
-          staticClass: "p-2 bg-red mx-2 text-white",
+          staticClass: "p-2 bg-red-light mx-2 text-white",
           on: {
             click: function($event) {
               _vm.modalOpen = true
@@ -2778,21 +2778,27 @@ var render = function() {
             _c(
               "div",
               {
-                staticClass: "bg-red",
+                staticClass: "bg-red-light p-3",
                 attrs: { slot: "header" },
                 slot: "header"
               },
               [_c("p", { staticClass: "text-lg" }, [_vm._v("Are you sure?")])]
             ),
             _vm._v(" "),
-            _c("div", { attrs: { slot: "body" }, slot: "body" }, [
-              _c("p", [_vm._v(_vm._s(_vm.confirm_message))])
-            ]),
+            _c(
+              "div",
+              {
+                staticClass: "py-8 px-4",
+                attrs: { slot: "body" },
+                slot: "body"
+              },
+              [_c("p", [_vm._v(_vm._s(_vm.confirm_message))])]
+            ),
             _vm._v(" "),
             _c(
               "div",
               {
-                staticClass: "flex justify-end items-center",
+                staticClass: "flex justify-end items-center pb-4 px-4",
                 attrs: { slot: "footer" },
                 slot: "footer"
               },
@@ -2825,7 +2831,7 @@ var render = function() {
                     _c(
                       "button",
                       {
-                        staticClass: "p-2 mx-2 bg-red text-white",
+                        staticClass: "p-2 mx-2 bg-red-light text-white",
                         attrs: { disabled: _vm.waiting, type: "submit" }
                       },
                       [_vm._v("OK, Delete")]
