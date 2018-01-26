@@ -2897,9 +2897,9 @@ var render = function() {
       _vm._v(" "),
       _c(
         "transition",
-        { attrs: { name: "modal" } },
+        { attrs: { name: "modal", duration: 1000 } },
         [
-          _c("modal", { key: "inner-modal", attrs: { show: _vm.modalOpen } }, [
+          _c("modal", { attrs: { show: _vm.modalOpen } }, [
             _c(
               "div",
               {

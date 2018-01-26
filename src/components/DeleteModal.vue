@@ -1,8 +1,8 @@
 <template>
   <span class="dd-delete-modal-component">
       <button class="p-2 bg-red-light mx-2 text-white" @click="modalOpen = true">Delete</button>
-      <transition name="modal">
-      <modal :show="modalOpen" key="inner-modal">
+      <transition name="modal" :duration="1000">
+      <modal :show="modalOpen">
         <div slot="header" class="bg-red-light p-3">
           <p class="text-lg">Are you sure?</p>
         </div>
@@ -21,7 +21,7 @@
 </template>
 
 <script>
-import Modal from "./BaseModal";
+import BaseModal from "./BaseModal";
 import axios from "axios";
 
 export default {
@@ -40,7 +40,7 @@ export default {
   },
 
   components: {
-    modal: Modal
+    modal: BaseModal
   },
 
   data() {
