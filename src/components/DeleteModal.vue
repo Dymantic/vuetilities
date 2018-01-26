@@ -1,15 +1,18 @@
 <template>
   <span class="dd-delete-modal-component">
-      <button @click="modalOpen = true">Delete</button>
+      <button class="p-2 bg-red mx-2 text-white" @click="modalOpen = true">Delete</button>
       <transition name="modal">
       <modal :show="modalOpen">
+        <div slot="header" class="bg-red">
+          <p class="text-lg">Are you sure?</p>
+        </div>
         <div slot="body">
           <p>{{ confirm_message }}</p>
         </div>
-        <div slot="footer">
-          <button type="button" @click="modalOpen = false">Cancel</button>
+        <div slot="footer" class="flex justify-end items-center">
+          <button class="p-2 mx-2 bg-grey-light text-white" type="button" @click="modalOpen = false">Cancel</button>
           <form :action="deleteUrl" @submit="submit($event)">
-            <button :disabled="waiting" type="submit">OK, Delete</button> 
+            <button class="p-2 mx-2 bg-red text-white" :disabled="waiting" type="submit">OK, Delete</button> 
           </form>
         </div>
       </modal>
