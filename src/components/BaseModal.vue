@@ -1,7 +1,7 @@
 <template>
     <div class="dd-modal-mask" v-show="show">
         <div class="modal-wrapper">
-            <div class="modal-container" :class="{'wide': wider}">
+            <div class="modal-container">
 
                 <div class="modal-header">
                     <slot name="header">

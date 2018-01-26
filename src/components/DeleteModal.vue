@@ -1,6 +1,6 @@
 <template>
   <span class="dd-delete-modal-component">
-      <button @click="modalOpen = true"></button>
+      <button @click="modalOpen = true">Delete</button>
       <transition name="modal">
       <modal :show="modalOpen">
         <div slot="body">
