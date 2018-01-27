@@ -1,6 +1,6 @@
 {
   "name": "@dymantic/vuetilities",
-  "version": "0.0.14",
+  "version": "0.0.15",
   "description": "\"A collection of common vue components we tend to reuse\"",
   "main": "dist/index.js",
   "scripts": {
