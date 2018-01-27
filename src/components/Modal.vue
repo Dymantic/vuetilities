@@ -1,28 +1,28 @@
 <template>
   <transition name="modal">
     <div class="dd-modal-mask" v-show="show">
-        <div class="modal-wrapper">
-            <div class="modal-container">
+      <div class="modal-wrapper">
+          <div class="modal-container">
 
-                <div class="modal-header">
-                    <slot name="header">
-                    </slot>
-                </div>
+              <div class="modal-header">
+                  <slot name="header">
+                  </slot>
+              </div>
 
-                <div class="modal-body">
-                    <slot name="body">
-                        
-                    </slot>
-                </div>
+              <div class="modal-body">
+                  <slot name="body">
+                      
+                  </slot>
+              </div>
 
-                <div class="modal-footer">
-                    <slot name="footer">
-                        
-                    </slot>
-                </div>
-            </div>
-        </div>
-    </div>
+              <div class="modal-footer">
+                  <slot name="footer">
+                      
+                  </slot>
+              </div>
+          </div>
+      </div>
+  </div>
   </transition>
 </template>
 
@@ -55,7 +55,7 @@ export default {
   }
   .modal-container {
     width: 100%;
-    max-width: 600px;
+    max-width: 90vw;
     margin: 0px auto;
     background-color: #fff;
     border-radius: 2px;
@@ -63,17 +63,8 @@ export default {
     transition: all 0.3s ease;
     max-height: 95vh;
     color: #333;
-    &.wide {
-      max-width: 90vw;
-    }
-  }
-  .modal-header h3 {
-    margin-top: 0;
-    color: #333;
-    max-height: 80px;
   }
   .modal-body {
-    margin: 20px 0;
     max-height: 85vh;
     overflow-y: auto;
   }

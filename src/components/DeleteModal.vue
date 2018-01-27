@@ -1,27 +1,30 @@
 <template>
   <span class="dd-delete-modal-component">
       <button class="p-2 bg-red-light mx-2 text-white" @click="modalOpen = true">Delete</button>
-      <transition name="modal" :duration="1000">
-      <modal :show="modalOpen">
-        <div slot="header" class="bg-red-light p-3">
-          <p class="text-lg">Are you sure?</p>
+      <transition name="modal">
+        <div class="dd-modal-mask" v-show="show">
+          <div class="modal-wrapper">
+            <div class="modal-container">
+              <div class="modal-header bg-red-light p-3">
+                <p class="text-lg">Are you sure?</p>
+              </div>
+              <div class="modal-body py-8 px-4">
+                <p>{{ confirm_message }}</p>
+              </div>
+              <div class="modal-footer flex justify-end items-center pb-4 px-4">
+                <button class="p-2 mx-2 bg-grey-light text-white" type="button" @click="modalOpen = false">Cancel</button>
+                <form :action="deleteUrl" @submit="submit($event)">
+                  <button class="p-2 mx-2 bg-red-light text-white" :disabled="waiting" type="submit">OK, Delete</button> 
+                </form>
+              </div>
+            </div>
+          </div>
         </div>
-        <div slot="body" class="py-8 px-4">
-          <p>{{ confirm_message }}</p>
-        </div>
-        <div slot="footer" class="flex justify-end items-center pb-4 px-4">
-          <button class="p-2 mx-2 bg-grey-light text-white" type="button" @click="modalOpen = false">Cancel</button>
-          <form :action="deleteUrl" @submit="submit($event)">
-            <button class="p-2 mx-2 bg-red-light text-white" :disabled="waiting" type="submit">OK, Delete</button> 
-          </form>
-        </div>
-      </modal>
       </transition>
   </span>
 </template>
 
 <script>
-import BaseModal from "./BaseModal";
 import axios from "axios";
 
 export default {
@@ -37,10 +40,6 @@ export default {
       type: Boolean,
       default: false
     }
-  },
-
-  components: {
-    modal: BaseModal
   },
 
   data() {
@@ -82,6 +81,43 @@ export default {
 </script>
 
 <style lang="scss" type="text/scss">
+.dd-modal-mask {
+  position: fixed;
+  z-index: 9998;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: table;
+  transition: opacity 0.3s ease;
+
+  .modal-wrapper {
+    display: table-cell;
+    vertical-align: middle;
+  }
+
+  .modal-container {
+    width: 100%;
+    max-width: 600px;
+    margin: 0px auto;
+    background-color: #fff;
+    border-radius: 2px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.33);
+    transition: all 0.3s ease;
+    max-height: 95vh;
+    color: #333;
+  }
+
+  .modal-body {
+    max-height: 85vh;
+    overflow-y: auto;
+  }
+  .modal-footer {
+    max-height: 100px;
+  }
+}
+
 .modal-enter,
 .modal-leave {
   opacity: 0;

@@ -1,6 +1,5 @@
 import { mount } from "@vue/test-utils";
 import DeleteModal from "../../src/components/DeleteModal";
-import Modal from "../../src/components/BaseModal";
 import { assert } from "chai";
 import moxios from "moxios";
 
@@ -25,8 +24,8 @@ describe("Controlling modal behaviour", () => {
 
     assert.isTrue(wrapper.vm.modalOpen);
 
-    let modal = wrapper.find(Modal);
-    assert.isTrue(modal.vm.show);
+    let modal = wrapper.find(".dd-modal-mask");
+    assert.equal("none", modal.element.style.display);
   });
 
   it("displays the correct modal message", () => {
@@ -47,13 +46,12 @@ describe("Controlling modal behaviour", () => {
   });
 
   it("clicking the cancel button closes the modal", () => {
-    let modal = wrapper.find(Modal);
-
     clickDeleteButton();
-    assert.isTrue(modal.vm.show);
 
     clickCancelButton();
-    assert.isFalse(modal.vm.show);
+
+    let modal = wrapper.find(".dd-modal-mask");
+    assert.equal("none", modal.element.style.display);
   });
 
   it("has an actual submit button for the delete form", () => {
@@ -97,7 +95,7 @@ describe("Controlling modal behaviour", () => {
   });
 
   it("closes the modal on a successfully axios call", done => {
-    let modal = wrapper.find(Modal);
+    let modal = wrapper.find(".dd-modal-mask");
     moxios.stubRequest("/test/delete/url", {
       status: 200
     });
@@ -106,7 +104,7 @@ describe("Controlling modal behaviour", () => {
     clickConfirmButton();
 
     moxios.wait(() => {
-      assert.isFalse(modal.vm.show);
+      assert.equal("none", modal.element.style.display);
       done();
     });
   });
@@ -157,7 +155,7 @@ describe("Controlling modal behaviour", () => {
   });
 
   it("closes the modal after a failed request", done => {
-    let modal = wrapper.find(Modal);
+    let modal = wrapper.find(".dd-modal-mask");
     moxios.stubRequest("/test/delete/url", {
       status: 500
     });
@@ -166,7 +164,7 @@ describe("Controlling modal behaviour", () => {
     clickConfirmButton();
 
     moxios.wait(() => {
-      assert.isFalse(modal.vm.show);
+      assert.equal("none", modal.element.style.display);
       done();
     });
   });
