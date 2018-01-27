@@ -2691,8 +2691,8 @@ var render = function() {
               {
                 name: "show",
                 rawName: "v-show",
-                value: _vm.show,
-                expression: "show"
+                value: _vm.modalOpen,
+                expression: "modalOpen"
               }
             ],
             staticClass: "dd-modal-mask"

@@ -2,7 +2,7 @@
   <span class="dd-delete-modal-component">
       <button class="p-2 bg-red-light mx-2 text-white" @click="modalOpen = true">Delete</button>
       <transition name="modal">
-        <div class="dd-modal-mask" v-show="show">
+        <div class="dd-modal-mask" v-show="modalOpen">
           <div class="modal-wrapper">
             <div class="modal-container">
               <div class="modal-header bg-red-light p-3">
