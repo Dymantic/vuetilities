@@ -170,6 +170,14 @@ describe("Controlling modal behaviour", () => {
     });
   });
 
+  it("accepts a csrf token prop", () => {
+    wrapper = makeWrapper({ csrfToken: "xxx-123" });
+
+    let input = wrapper.find("input.csrf-token");
+
+    assert.exists(input.element);
+  });
+
   function makeWrapper(prop_data = {}) {
     return mount(DeleteModal, {
       propsData: Object.assign(

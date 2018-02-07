@@ -972,6 +972,7 @@ module.exports = function normalizeComponent (
 //
 //
 //
+//
 
 
 
@@ -987,6 +988,10 @@ module.exports = function normalizeComponent (
     redirects: {
       type: Boolean,
       default: false
+    },
+    "csrf-token": {
+      type: String,
+      default: ""
     }
   },
 
@@ -2747,6 +2752,12 @@ var render = function() {
                             name: "_method",
                             value: "DELETE"
                           }
+                        }),
+                        _vm._v(" "),
+                        _c("input", {
+                          staticClass: "csrf-token",
+                          attrs: { type: "hidden", name: "_token" },
+                          domProps: { value: _vm.csrfToken }
                         }),
                         _vm._v(" "),
                         _c(

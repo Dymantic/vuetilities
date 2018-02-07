@@ -15,6 +15,7 @@
                 <button class="p-2 mx-2 bg-grey-light text-white" type="button" @click="modalOpen = false">Cancel</button>
                 <form :action="deleteUrl" @submit="submit($event)" method="POST">
                   <input type="hidden" name="_method" value="DELETE">
+                  <input type="hidden" name="_token" :value="csrfToken" class="csrf-token">
                   <button class="p-2 mx-2 bg-red-light text-white" :disabled="waiting" type="submit">OK, Delete</button> 
                 </form>
               </div>
@@ -40,6 +41,10 @@ export default {
     redirects: {
       type: Boolean,
       default: false
+    },
+    "csrf-token": {
+      type: String,
+      default: ""
     }
   },
 
