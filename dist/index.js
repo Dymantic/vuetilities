@@ -971,6 +971,7 @@ module.exports = function normalizeComponent (
 //
 //
 //
+//
 
 
 
@@ -2732,7 +2733,7 @@ var render = function() {
                     _c(
                       "form",
                       {
-                        attrs: { action: _vm.deleteUrl },
+                        attrs: { action: _vm.deleteUrl, method: "POST" },
                         on: {
                           submit: function($event) {
                             _vm.submit($event)
@@ -2740,6 +2741,14 @@ var render = function() {
                         }
                       },
                       [
+                        _c("input", {
+                          attrs: {
+                            type: "hidden",
+                            name: "_method",
+                            value: "DELETE"
+                          }
+                        }),
+                        _vm._v(" "),
                         _c(
                           "button",
                           {
