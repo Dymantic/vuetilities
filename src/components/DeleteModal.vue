@@ -13,7 +13,8 @@
               </div>
               <div class="modal-footer flex justify-end items-center pb-4 px-4">
                 <button class="p-2 mx-2 bg-grey-light text-white" type="button" @click="modalOpen = false">Cancel</button>
-                <form :action="deleteUrl" @submit="submit($event)">
+                <form :action="deleteUrl" @submit="submit($event)" method="POST">
+                  <input type="hidden" name="_method" value="DELETE">
                   <button class="p-2 mx-2 bg-red-light text-white" :disabled="waiting" type="submit">OK, Delete</button> 
                 </form>
               </div>
