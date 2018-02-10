@@ -1,5 +1,14 @@
 import { mount } from "@vue/test-utils";
 import DeleteModal from "../../src/components/DeleteModal";
+import moxios from "moxios";
+
+beforeEach(() => {
+  moxios.install();
+});
+
+afterEach(() => {
+  moxios.uninstall();
+});
 
 test("it can be passed the delete url as a prop", () => {
   const component = makeComponent({ deleteUrl: "/test/delete/url" });
@@ -48,7 +57,6 @@ test("has the actual delete form in the modal footer", () => {
 
 test("clicking the cancel button closes the modal", done => {
   const component = makeComponent();
-  component.setData({ modalOpen: true });
   const modal = component.find(".dd-modal-mask");
   const delete_button = component.find(".dd-delete-modal-component > button");
   const cancel_button = component.find(".modal-footer button[type=button]");
@@ -57,9 +65,121 @@ test("clicking the cancel button closes the modal", done => {
   expect(modal.element.style.display).not.toBe("none");
 
   cancel_button.trigger("click");
-  //   expect(modal.element.style.display).toBe("none");
+
   expect(component.vm.modalOpen).toBe(false);
   done();
+});
+
+it("no axios calls are made if the redirect prop is true", done => {
+  const component = makeComponent({ redirects: true });
+
+  submitForm(component);
+
+  moxios.wait(() => {
+    let request = moxios.requests.mostRecent();
+    expect(request).not.toBeDefined();
+    done();
+  });
+});
+
+it("disables the confirm button while delete ajax request being made", () => {
+  const component = makeComponent();
+
+  submitForm(component);
+
+  const confirm_button = component.find("form button[type=submit]");
+  expect(confirm_button.element.disabled).toBe(true);
+});
+
+it("closes the modal on a successfully axios call", done => {
+  const component = makeComponent();
+  const modal = component.find(".dd-modal-mask");
+
+  moxios.stubRequest("/test/delete/url", {
+    status: 200
+  });
+
+  submitForm(component);
+
+  moxios.wait(() => {
+    expect(modal.element.style.display).toEqual("none");
+    done();
+  });
+});
+
+it("it emits an event when a successfull delete request is made", done => {
+  const component = makeComponent();
+
+  moxios.stubRequest("/test/delete/url", {
+    status: 200
+  });
+
+  submitForm(component);
+
+  moxios.wait(() => {
+    expect(component.emitted()["item-deleted"]).toBeDefined();
+    done();
+  });
+});
+
+it("emits an event if the delete request fails", done => {
+  const component = makeComponent();
+
+  moxios.stubRequest("/test/delete/url", {
+    status: 500
+  });
+
+  submitForm(component);
+
+  moxios.wait(() => {
+    const event = component.emitted()["delete-request-failed"];
+    expect(event).toBeDefined();
+    expect(event[0][0].status).toEqual(500);
+    done();
+  });
+});
+
+it("button is not disabled after request completes", done => {
+  const component = makeComponent();
+
+  moxios.stubRequest("/test/delete/url", {
+    status: 500
+  });
+
+  const form = component.find('form[action="/test/delete/url"]');
+  form.trigger("submit");
+
+  moxios.wait(() => {
+    const confirm_button = component.find("form button[type=submit]");
+    expect(confirm_button.element.disabled).toBe(false);
+    done();
+  });
+});
+
+it("closes the modal after a failed request", done => {
+  const component = makeComponent();
+  const modal = component.find(".dd-modal-mask");
+
+  moxios.stubRequest("/test/delete/url", {
+    status: 500
+  });
+
+  submitForm(component);
+
+  moxios.wait(() => {
+    expect(modal.element.style.display).toBe("none");
+    done();
+  });
+});
+
+it("accepts a csrf token prop", () => {
+  const component = makeComponent({ csrfToken: "xxx-123" });
+
+  const input = component.contains(
+    "input.csrf-token[value=xxx-123][name=_token]"
+  );
+
+  expect(input).toBe(true);
 });
 
 function makeComponent(props = {}) {
@@ -72,4 +192,9 @@ function makeComponent(props = {}) {
   );
 
   return mount(DeleteModal, { propsData });
+}
+
+function submitForm(component) {
+  const form = component.find('form[action="/test/delete/url"]');
+  form.trigger("submit");
 }
