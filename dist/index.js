@@ -995,31 +995,37 @@ module.exports = function normalizeComponent (
     }
   },
 
-  data() {
+  data: function data() {
     return {
       modalOpen: false,
       waiting: false
     };
   },
 
+
   computed: {
-    confirm_message() {
-      return `Are you sure you want to delete ${this.resourceName}? This may not be reversable.`;
+    confirm_message: function confirm_message() {
+      return "Are you sure you want to delete " + this.resourceName + "? This may not be reversable.";
     }
   },
 
   methods: {
-    submit(event) {
+    submit: function submit(event) {
+      var _this = this;
+
       if (this.redirects) {
         return false;
       }
       event.preventDefault();
 
       this.waiting = true;
-      __WEBPACK_IMPORTED_MODULE_0_axios___default.a.delete(this.deleteUrl).then(() => this.$emit("item-deleted")).catch(err => this.$emit("delete-request-failed", err.response)).then(this.endRequest);
+      __WEBPACK_IMPORTED_MODULE_0_axios___default.a.delete(this.deleteUrl).then(function () {
+        return _this.$emit("item-deleted");
+      }).catch(function (err) {
+        return _this.$emit("delete-request-failed", err.response);
+      }).then(this.endRequest);
     },
-
-    endRequest() {
+    endRequest: function endRequest() {
       this.modalOpen = false;
       this.waiting = false;
     }
