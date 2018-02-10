@@ -5,11 +5,12 @@
   "main": "dist/index.js",
   "scripts": {
     "test": "jest",
-    "watch":
-      "mocha-webpack --webpack-config webpack.config.js --watch --require tests/setup.js tests/**/*.spec.js",
+    "watch": "mocha-webpack --webpack-config webpack.config.js --watch --require tests/setup.js tests/**/*.spec.js",
     "build": "node_modules/webpack/bin/webpack.js --config webpack.config.js"
   },
-  "keywords": ["vue"],
+  "keywords": [
+    "vue"
+  ],
   "author": "Michael Joyner",
   "license": "ISC",
   "repository": {
@@ -22,17 +23,13 @@
     "babel-jest": "^22.2.0",
     "babel-loader": "^7.1.2",
     "babel-preset-env": "^1.6.1",
-    "chai": "^4.1.2",
     "css-loader": "^0.28.9",
     "jest": "^22.2.1",
     "jsdom": "^11.5.1",
     "jsdom-global": "^3.0.2",
-    "mocha": "^4.0.0",
-    "mocha-webpack": "^1.0.1",
     "moxios": "^0.4.0",
     "node-sass": "^4.7.2",
     "sass-loader": "^6.0.6",
-    "sinon": "^4.1.6",
     "vue": "^2.5.13",
     "vue-jest": "^2.0.1",
     "vue-loader": "^13.7.0",
@@ -44,7 +41,11 @@
   },
   "jest": {
     "testRegex": "test.js$",
-    "moduleFileExtensions": ["js", "json", "vue"],
+    "moduleFileExtensions": [
+      "js",
+      "json",
+      "vue"
+    ],
     "transform": {
       ".*\\.(vue)$": "<rootDir>/node_modules/vue-jest",
       "^.+\\.js$": "<rootDir>/node_modules/babel-jest"
