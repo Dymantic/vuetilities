@@ -5,7 +5,7 @@
   "main": "dist/index.js",
   "scripts": {
     "test": "jest",
-    "watch": "mocha-webpack --webpack-config webpack.config.js --watch --require tests/setup.js tests/**/*.spec.js",
+    "watch": "jest --watch",
     "build": "node_modules/webpack/bin/webpack.js --config webpack.config.js"
   },
   "keywords": [
