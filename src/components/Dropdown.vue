@@ -190,6 +190,7 @@ export default {
     svg {
       fill: currentColor;
       margin-right: 8px;
+      vertical-align: middle;
     }
   }
 
