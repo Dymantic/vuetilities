@@ -1514,6 +1514,11 @@ module.exports = Cancel;
 //
 //
 //
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["a"] = ({
   props: {
@@ -3061,7 +3066,7 @@ exports = module.exports = __webpack_require__(1)(false);
 
 
 // module
-exports.push([module.i, "\n.dd-dropdown {\n  position: relative;\n}\n.dd-dropdown .dropdown-content {\n    position: absolute;\n    top: 100%;\n    display: flex;\n    flex-direction: column;\n    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.175);\n    background-clip: padding-box;\n    padding: 0.5rem 1rem;\n    min-width: 100%;\n}\n.dd-dropdown .dropdown-content a {\n      white-space: nowrap;\n      margin-top: 5px;\n      margin-bottom: 5px;\n}\n", ""]);
+exports.push([module.i, "\n.dd-dropdown {\n  position: relative;\n}\n.dd-dropdown > a {\n    text-decoration: none;\n    color: currentColor;\n}\n.dd-dropdown > a svg {\n      fill: currentColor;\n      margin-right: 8px;\n}\n.dd-dropdown .dropdown-content {\n    position: absolute;\n    top: 100%;\n    display: flex;\n    flex-direction: column;\n    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.175);\n    background-clip: padding-box;\n    padding: 0.5rem 1rem;\n    min-width: 100%;\n}\n.dd-dropdown .dropdown-content a {\n      white-space: nowrap;\n      margin-top: 5px;\n      margin-bottom: 5px;\n}\n", ""]);
 
 // exports
 
@@ -3121,7 +3126,24 @@ var render = function() {
           ]
         }
       },
-      [_vm._v(_vm._s(_vm.name))]
+      [
+        _vm._v(_vm._s(_vm.name) + "\n      "),
+        _c(
+          "svg",
+          {
+            attrs: {
+              height: "16",
+              viewBox: "0 0 24 24",
+              xmlns: "http://www.w3.org/2000/svg"
+            }
+          },
+          [
+            _c("path", { attrs: { d: "M7 10l5 5 5-5z" } }),
+            _vm._v(" "),
+            _c("path", { attrs: { d: "M0 0h24v24H0z", fill: "none" } })
+          ]
+        )
+      ]
     ),
     _vm._v(" "),
     _c(

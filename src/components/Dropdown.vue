@@ -8,7 +8,12 @@
            @keyup.down="handleKeyDown"
            @keyup.up="handleKeyUp"
            @keyup.enter="dropdown_open = true"
-        >{{ name }}</a>
+        >{{ name }}
+          <svg height="16" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+              <path d="M7 10l5 5 5-5z"/>
+              <path d="M0 0h24v24H0z" fill="none"/>
+          </svg>
+        </a>
         <div class="dropdown-content" ref="dropdown_content" v-show="dropdown_open" :style="alignment_style">
             <slot name="dropdown_content"></slot>    
         </div>
@@ -177,6 +182,16 @@ export default {
 <style lang="scss" type="text/css">
 .dd-dropdown {
   position: relative;
+
+  & > a {
+    text-decoration: none;
+    color: currentColor;
+
+    svg {
+      fill: currentColor;
+      margin-right: 8px;
+    }
+  }
 
   .dropdown-content {
     position: absolute;
