@@ -189,7 +189,6 @@ export default {
 
     svg {
       fill: currentColor;
-      margin-right: 8px;
       vertical-align: middle;
     }
   }
@@ -203,6 +202,8 @@ export default {
     background-clip: padding-box;
     padding: 0.5rem 1rem;
     min-width: 100%;
+    background: #fff;
+    z-index: 100;
 
     a {
       white-space: nowrap;
