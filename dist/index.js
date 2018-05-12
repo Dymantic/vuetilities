@@ -973,6 +973,7 @@ module.exports = defaults;
 //
 //
 //
+//
 
 
 
@@ -980,6 +981,18 @@ module.exports = defaults;
   props: {
     "delete-url": {
       type: String
+    },
+    buttonClasses: {
+      type: String,
+      default: "p-2 bg-red-light mx-2 text-white"
+    },
+    cancelButtonClasses: {
+      type: String,
+      default: "p-2 mx-2 bg-grey-light text-white"
+    },
+    deleteButtonClasses: {
+      type: String,
+      default: "p-2 mx-2 bg-red-light text-white"
     },
     "resource-name": {
       type: String,
@@ -2061,7 +2074,7 @@ exports = module.exports = __webpack_require__(1)(false);
 
 
 // module
-exports.push([module.i, "\n.dd-modal-mask {\n  position: fixed;\n  z-index: 9998;\n  top: 0;\n  left: 0;\n  width: 100%;\n  height: 100%;\n  background-color: rgba(0, 0, 0, 0.5);\n  display: table;\n  transition: opacity 0.3s ease;\n}\n.dd-modal-mask .modal-wrapper {\n    display: table-cell;\n    vertical-align: middle;\n}\n.dd-modal-mask .modal-container {\n    width: 100%;\n    max-width: 600px;\n    margin: 0px auto;\n    background-color: #fff;\n    border-radius: 2px;\n    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.33);\n    transition: all 0.3s ease;\n    max-height: 95vh;\n    color: #333;\n}\n.dd-modal-mask .modal-body {\n    max-height: 85vh;\n    overflow-y: auto;\n}\n.dd-modal-mask .modal-footer {\n    max-height: 100px;\n}\n.modal-enter,\n.modal-leave {\n  opacity: 0;\n}\n.modal-enter .modal-container,\n.modal-leave .modal-container {\n  -webkit-transform: scale(1.1);\n  transform: scale(1.1);\n}\n.modal-enter {\n  opacity: 0;\n}\n.modal-leave-active {\n  opacity: 0;\n}\n.modal-enter .modal-container,\n.modal-leave-active .modal-container {\n  -webkit-transform: scale(1.1);\n  transform: scale(1.1);\n}\n", ""]);
+exports.push([module.i, "\n.dd-delete-modal-mask {\n  position: fixed;\n  z-index: 9998;\n  top: 0;\n  left: 0;\n  width: 100%;\n  height: 100%;\n  background-color: rgba(0, 0, 0, 0.5);\n  display: table;\n  transition: opacity 0.3s ease;\n}\n.dd-delete-modal-mask .modal-wrapper {\n    display: table-cell;\n    vertical-align: middle;\n}\n.dd-delete-modal-mask .modal-container {\n    width: 100%;\n    max-width: 450px;\n    margin: 0px auto;\n    background-color: #fff;\n    border-radius: 2px;\n    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.33);\n    transition: all 0.3s ease;\n    max-height: 95vh;\n    color: #333;\n}\n.dd-delete-modal-mask .modal-body {\n    max-height: 85vh;\n    overflow-y: auto;\n}\n.dd-delete-modal-mask .modal-footer {\n    max-height: 100px;\n}\n.modal-enter,\n.modal-leave {\n  opacity: 0;\n}\n.modal-enter .modal-container,\n.modal-leave .modal-container {\n  -webkit-transform: scale(1.1);\n  transform: scale(1.1);\n}\n.modal-enter {\n  opacity: 0;\n}\n.modal-leave-active {\n  opacity: 0;\n}\n.modal-enter .modal-container,\n.modal-leave-active .modal-container {\n  -webkit-transform: scale(1.1);\n  transform: scale(1.1);\n}\n", ""]);
 
 // exports
 
@@ -2966,7 +2979,7 @@ var render = function() {
       _c(
         "button",
         {
-          staticClass: "p-2 bg-red-light mx-2 text-white",
+          class: _vm.buttonClasses,
           on: {
             click: function($event) {
               _vm.modalOpen = true
@@ -2988,14 +3001,43 @@ var render = function() {
                 expression: "modalOpen"
               }
             ],
-            staticClass: "dd-modal-mask"
+            staticClass: "dd-delete-modal-mask"
           },
           [
             _c("div", { staticClass: "modal-wrapper" }, [
               _c("div", { staticClass: "modal-container" }, [
-                _c("div", { staticClass: "modal-header bg-red-light p-3" }, [
-                  _c("p", { staticClass: "text-lg" }, [_vm._v("Are you sure?")])
-                ]),
+                _c(
+                  "div",
+                  {
+                    staticClass:
+                      "modal-header bg-red-light p-3 text-white flex items-center"
+                  },
+                  [
+                    _c(
+                      "svg",
+                      {
+                        attrs: {
+                          xmlns: "http://www.w3.org/2000/svg",
+                          height: "20px",
+                          viewBox: "0 0 20 20"
+                        }
+                      },
+                      [
+                        _c("path", {
+                          attrs: {
+                            fill: "#fff",
+                            d:
+                              "M6 2l2-2h4l2 2h4v2H2V2h4zM3 6h14l-1 14H4L3 6zm5 2v10h1V8H8zm3 0v10h1V8h-1z"
+                          }
+                        })
+                      ]
+                    ),
+                    _vm._v(" "),
+                    _c("p", { staticClass: "text-lg ml-4" }, [
+                      _vm._v("Are you sure?")
+                    ])
+                  ]
+                ),
                 _vm._v(" "),
                 _c("div", { staticClass: "modal-body py-8 px-4" }, [
                   _c("p", [_vm._v(_vm._s(_vm.confirm_message))])
@@ -3011,7 +3053,7 @@ var render = function() {
                     _c(
                       "button",
                       {
-                        staticClass: "p-2 mx-2 bg-grey-light text-white",
+                        class: _vm.cancelButtonClasses,
                         attrs: { type: "button" },
                         on: {
                           click: function($event) {
@@ -3050,7 +3092,7 @@ var render = function() {
                         _c(
                           "button",
                           {
-                            staticClass: "p-2 mx-2 bg-red-light text-white",
+                            class: _vm.deleteButtonClasses,
                             attrs: { disabled: _vm.waiting, type: "submit" }
                           },
                           [_vm._v("OK, Delete")]

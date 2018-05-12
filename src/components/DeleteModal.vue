@@ -1,22 +1,23 @@
 <template>
   <span class="dd-delete-modal-component">
-      <button class="p-2 bg-red-light mx-2 text-white" @click="modalOpen = true">Delete</button>
+      <button :class="buttonClasses" class="" @click="modalOpen = true">Delete</button>
       <transition name="modal">
-        <div class="dd-modal-mask" v-show="modalOpen">
+        <div class="dd-delete-modal-mask" v-show="modalOpen">
           <div class="modal-wrapper">
             <div class="modal-container">
-              <div class="modal-header bg-red-light p-3">
-                <p class="text-lg">Are you sure?</p>
+              <div class="modal-header bg-red-light p-3 text-white flex items-center">
+                <svg xmlns="http://www.w3.org/2000/svg" height=20px viewBox="0 0 20 20"><path fill="#fff" d="M6 2l2-2h4l2 2h4v2H2V2h4zM3 6h14l-1 14H4L3 6zm5 2v10h1V8H8zm3 0v10h1V8h-1z"/></svg>
+                <p class="text-lg ml-4">Are you sure?</p>
               </div>
               <div class="modal-body py-8 px-4">
                 <p>{{ confirm_message }}</p>
               </div>
               <div class="modal-footer flex justify-end items-center pb-4 px-4">
-                <button class="p-2 mx-2 bg-grey-light text-white" type="button" @click="modalOpen = false">Cancel</button>
+                <button :class="cancelButtonClasses" type="button" @click="modalOpen = false">Cancel</button>
                 <form :action="deleteUrl" @submit="submit($event)" method="POST">
                   <input type="hidden" name="_method" value="DELETE">
                   <input type="hidden" name="_token" :value="csrfToken" class="csrf-token">
-                  <button class="p-2 mx-2 bg-red-light text-white" :disabled="waiting" type="submit">OK, Delete</button> 
+                  <button :class="deleteButtonClasses" :disabled="waiting" type="submit">OK, Delete</button> 
                 </form>
               </div>
             </div>
@@ -33,6 +34,18 @@ export default {
   props: {
     "delete-url": {
       type: String
+    },
+    buttonClasses: {
+      type: String,
+      default: "p-2 bg-red-light mx-2 text-white"
+    },
+    cancelButtonClasses: {
+      type: String,
+      default: "p-2 mx-2 bg-grey-light text-white"
+    },
+    deleteButtonClasses: {
+      type: String,
+      default: "p-2 mx-2 bg-red-light text-white"
     },
     "resource-name": {
       type: String,
@@ -87,7 +100,7 @@ export default {
 </script>
 
 <style lang="scss" type="text/scss">
-.dd-modal-mask {
+.dd-delete-modal-mask {
   position: fixed;
   z-index: 9998;
   top: 0;
@@ -105,7 +118,7 @@ export default {
 
   .modal-container {
     width: 100%;
-    max-width: 600px;
+    max-width: 450px;
     margin: 0px auto;
     background-color: #fff;
     border-radius: 2px;
