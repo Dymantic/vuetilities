@@ -1743,22 +1743,6 @@ module.exports = Cancel;
   },
 
 
-  computed: {
-    knob_style: function knob_style() {
-      var on_colour = this.onColor || "#00FF00";
-
-      if (this.switchState) {
-        return {
-          background: on_colour
-        };
-      }
-
-      return {
-        background: "#ccc"
-      };
-    }
-  },
-
   methods: {
     flipSwitch: function flipSwitch(ev) {
       var _this = this;
@@ -3414,7 +3398,7 @@ exports = module.exports = __webpack_require__(1)(false);
 
 
 // module
-exports.push([module.i, "\n.dd-toggleswitch input {\n  display: none;\n}\n.dd-toggleswitch label {\n  display: flex;\n  align-items: center;\n}\n.dd-toggleswitch label .label-text {\n    min-width: 3rem;\n    margin-right: 1rem;\n}\n.dd-toggleswitch .switch {\n  position: relative;\n}\n.dd-toggleswitch .switch .rail {\n    width: 2rem;\n    height: 0.4rem;\n    border-radius: 0.2rem;\n    background: #ccc;\n}\n.dd-toggleswitch .switch .knob {\n    width: 1rem;\n    height: 1rem;\n    border-radius: 50%;\n    position: absolute;\n    background: #ccc;\n    z-index: 100;\n    top: -0.25rem;\n    right: -0.5rem;\n    transition: 0.3s ease-in-out;\n    transform: translate3d(0, 0, 0);\n}\n.dd-toggleswitch .switch.active .knob {\n    transform: translate3d(-2rem, 0, 0);\n    background: currentColor;\n}\n.dd-toggleswitch .switch.pending {\n    transform: scale(0.95);\n}\n.dd-toggleswitch .switch.pending .knob {\n      transform: translate3d(-1rem, 0, 0);\n      background: #ccc;\n}\n", ""]);
+exports.push([module.i, "\n.dd-toggleswitch input {\n  display: none;\n}\n.dd-toggleswitch label {\n  display: flex;\n  align-items: center;\n}\n.dd-toggleswitch label .label-text {\n    min-width: 3rem;\n    margin-right: 1rem;\n}\n.dd-toggleswitch .switch {\n  position: relative;\n}\n.dd-toggleswitch .switch .rail {\n    width: 3rem;\n    height: 1rem;\n    border-radius: 0.5rem;\n    background: #ccc;\n}\n.dd-toggleswitch .switch .knob {\n    width: 1rem;\n    height: 1rem;\n    border-radius: 50%;\n    position: absolute;\n    background: #fff;\n    border: 1px solid #bbb;\n    border-style: inset;\n    z-index: 100;\n    top: 0.001rem;\n    right: 0rem;\n    transition: 0.3s ease-in-out;\n    transform: translate3d(0, 0, 0);\n}\n.dd-toggleswitch .switch.active .knob {\n    transform: translate3d(-2rem, 0, 0);\n}\n.dd-toggleswitch .switch.active .rail {\n    background: currentColor;\n}\n.dd-toggleswitch .switch.pending {\n    transform: scale(0.95);\n}\n.dd-toggleswitch .switch.pending .knob {\n      transform: translate3d(-1rem, 0, 0);\n      background: #ccc;\n}\n", ""]);
 
 // exports
 
@@ -3447,7 +3431,7 @@ var render = function() {
         [
           _c("div", { staticClass: "rail" }),
           _vm._v(" "),
-          _c("div", { staticClass: "knob", style: _vm.knob_style })
+          _c("div", { staticClass: "knob" })
         ]
       )
     ])

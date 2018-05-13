@@ -5,7 +5,7 @@
             <input type="checkbox" :disabled="pending" :checked="switchState" @change="flipSwitch">
             <span class="switch" :class="{'active': switchState, 'pending': pending }">
                 <div class="rail"></div>
-                <div class="knob" :style="knob_style"></div>
+                <div class="knob"></div>
             </span>
         </label>
     </span>
@@ -49,22 +49,6 @@ export default {
     };
   },
 
-  computed: {
-    knob_style() {
-      const on_colour = this.onColor || "#00FF00";
-
-      if (this.switchState) {
-        return {
-          background: on_colour
-        };
-      }
-
-      return {
-        background: "#ccc"
-      };
-    }
-  },
-
   methods: {
     flipSwitch(ev) {
       this.pending = true;
@@ -106,9 +90,9 @@ export default {
     position: relative;
 
     .rail {
-      width: 2rem;
-      height: 0.4rem;
-      border-radius: 0.2rem;
+      width: 3rem;
+      height: 1rem;
+      border-radius: 0.5rem;
       background: #ccc;
     }
 
@@ -117,10 +101,12 @@ export default {
       height: 1rem;
       border-radius: 50%;
       position: absolute;
-      background: #ccc;
+      background: #fff;
+      border: 1px solid #bbb;
+      border-style: inset;
       z-index: 100;
-      top: -0.25rem;
-      right: -0.5rem;
+      top: 0.001rem;
+      right: 0rem;
       transition: 0.3s ease-in-out;
       transform: translate3d(0, 0, 0);
     }
@@ -128,6 +114,9 @@ export default {
     &.active {
       .knob {
         transform: translate3d(-2rem, 0, 0);
+      }
+
+      .rail {
         background: currentColor;
       }
     }
