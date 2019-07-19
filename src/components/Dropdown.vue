@@ -1,24 +1,30 @@
 <template>
-    <span class="dd-dropdown">
-        <a href="#"
-           role="button"
-           aria-haspopup="true"
-           :aria-expanded="dropdown_open ? 'true' : 'false'"
-           @click.prevent="handleDropdownClick"
-           @keyup.down="handleKeyDown"
-           @keyup.up="handleKeyUp"
-           @keyup.enter="dropdown_open = true"
-        >{{ name }}
-          <svg height="16" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-              <path d="M7 10l5 5 5-5z"/>
-              <path d="M0 0h24v24H0z" fill="none"/>
-          </svg>
-        </a>
-        <div class="dropdown-content" ref="dropdown_content" v-show="dropdown_open" :style="alignment_style">
-            <slot name="dropdown_content"></slot>    
-        </div>
-    </span>
-    
+  <span class="dd-dropdown">
+    <a
+      href="#"
+      role="button"
+      aria-haspopup="true"
+      :aria-expanded="dropdown_open ? 'true' : 'false'"
+      @click.prevent="handleDropdownClick"
+      @keyup.down="handleKeyDown"
+      @keyup.up="handleKeyUp"
+      @keyup.enter="dropdown_open = true"
+    >
+      {{ name }}
+      <svg height="16" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+        <path d="M7 10l5 5 5-5z" />
+        <path d="M0 0h24v24H0z" fill="none" />
+      </svg>
+    </a>
+    <div
+      class="dropdown-content"
+      ref="dropdown_content"
+      v-show="dropdown_open"
+      :style="alignment_style"
+    >
+      <slot name="dropdown_content"></slot>
+    </div>
+  </span>
 </template>
 
 <script>
@@ -190,6 +196,7 @@ export default {
     svg {
       fill: currentColor;
       vertical-align: middle;
+      display: inline;
     }
   }
 
