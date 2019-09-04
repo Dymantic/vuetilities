@@ -21,6 +21,7 @@
       ref="dropdown_content"
       v-show="dropdown_open"
       :style="alignment_style"
+      @mouseleave="closeDropdown"
     >
       <slot name="dropdown_content"></slot>
     </div>

@@ -1544,6 +1544,7 @@ module.exports = Cancel;
 //
 //
 //
+//
 
 /* harmony default export */ __webpack_exports__["a"] = ({
   props: {
@@ -3295,7 +3296,8 @@ var render = function() {
         ],
         ref: "dropdown_content",
         staticClass: "dropdown-content",
-        style: _vm.alignment_style
+        style: _vm.alignment_style,
+        on: { mouseleave: _vm.closeDropdown }
       },
       [_vm._t("dropdown_content")],
       2
